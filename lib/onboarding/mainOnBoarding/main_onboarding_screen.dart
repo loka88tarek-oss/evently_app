@@ -44,7 +44,7 @@ bool isDark = false;
             SizedBox(height: size.height * .01),
             Text(
               "Choose your preferred theme and\n language to get started with a\n comfortable, tailored experience that suits\n your style.", //TODO LOCALIZATION
-              style: AppTextStyles.styleS18W400(
+              style: AppTextStyles.styleS16W400(
                 color: Theme.of(context).hoverColor,
               ),
             ),
