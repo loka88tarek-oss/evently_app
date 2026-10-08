@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 
 class AppThemes {
   static ThemeData lightTheme = ThemeData(
+    dividerColor: AppColors.lightInputTextFeildBorderColor,
+    hoverColor: AppColors.lightSecTextColor,
+    splashColor: AppColors.lightTextFeildFillColor,
+    shadowColor: AppColors.lightMainColor,
+    hintColor: AppColors.lightInputTextFeildBorderColor,
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.lightMainColor),
     scaffoldBackgroundColor: AppColors.lightBgColor,
     appBarTheme: AppBarTheme(
@@ -36,6 +41,11 @@ class AppThemes {
     )
   );
   static ThemeData darkTheme = ThemeData(
+    dividerColor: AppColors.darkInputTextFeildBorderColor,
+      hoverColor: AppColors.darkSecTextColor,
+     splashColor: AppColors.darkTextFeildFillColor,
+     shadowColor: AppColors.darkMainColor,
+        hintColor: AppColors.darkInputTextFeildBorderColor,
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.darkMainColor),
     scaffoldBackgroundColor: AppColors.darkBgColor,
     appBarTheme: AppBarTheme(
