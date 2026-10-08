@@ -1,5 +1,7 @@
+import 'package:evently_app/auth/password/forget_password_screen.dart';
 import 'package:evently_app/auth/register/register_screen.dart';
 import 'package:evently_app/common/app_text_styles.dart';
+import 'package:evently_app/widgets/filled_button_widget.dart';
 import 'package:evently_app/gen/assets.gen.dart';
 import 'package:evently_app/widgets/custom_text_form_feild.dart';
 import 'package:flutter/gestures.dart';
@@ -65,7 +67,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: .end,
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).pushNamed(ForgetPasswordScreen.routeName);
+                      },
                       child: Text(
                         "Forget Password? ",
                         style:
@@ -81,30 +85,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 SizedBox(height: size.height * .07),
-                SizedBox(
-                  width: double.infinity,
-                  height: 48,
-                  child: FilledButton(
-                    style: FilledButton.styleFrom(
-                      backgroundColor: Theme.of(context).shadowColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-            
-                    onPressed: () {
-                      
-                     bool isValid = _formState.currentState!.validate();
-                     if(isValid){
-                      
-                     }
-                    },
-                    child: Text(
-                      "Login",
-                      style: AppTextStyles.styleS20W500(color: Colors.white),
-                    ),
-                  ),
-                ),
+                FilledButtonWidget(formState: _formState,text: "Login",onPressed: () {
+                     bool isValid = _formState!.currentState!.validate();
+         if(isValid){
+          
+         }
+                },),
                 SizedBox(height: size.height * .05),
                 Row(
             
@@ -167,3 +153,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+

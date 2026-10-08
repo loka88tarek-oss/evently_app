@@ -54,6 +54,10 @@ class $AssetsImagesGen {
   AssetGenImage get beingCreativeOnboarding1 =>
       const AssetGenImage('assets/images/being-creative_onboarding1.png');
 
+  /// File path: assets/images/forget_password.png
+  AssetGenImage get forgetPassword =>
+      const AssetGenImage('assets/images/forget_password.png');
+
   /// File path: assets/images/logo_dark.png
   AssetGenImage get logoDark =>
       const AssetGenImage('assets/images/logo_dark.png');
@@ -66,6 +70,7 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [
     appBarLogo,
     beingCreativeOnboarding1,
+    forgetPassword,
     logoDark,
     logoLight,
   ];

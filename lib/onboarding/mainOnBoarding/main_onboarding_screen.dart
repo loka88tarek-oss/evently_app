@@ -27,7 +27,7 @@ bool isDark = false;
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: .start,
-          crossAxisAlignment: .start,
+          crossAxisAlignment: .stretch,
           children: [
             Center(
               child: Image.asset(
@@ -202,18 +202,5 @@ bool isDark = false;
       ),
     );
   }
-  Widget _langText(String text, bool selected) => Text(
-      text,
-      style: AppTextStyles.styleS14W600(
-        color: selected ? Colors.white : Theme.of(context).cardColor,
-      ),
-    );
-
-Widget _themeIcon(String asset, bool selected) => SvgPicture.asset(
-      asset,
-      colorFilter: ColorFilter.mode(
-        selected ? Colors.white : Theme.of(context).cardColor,
-        BlendMode.srcIn,
-      ),
-    );
+ 
 }
