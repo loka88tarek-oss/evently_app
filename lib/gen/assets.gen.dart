@@ -37,8 +37,12 @@ class $AssetsImagesGen {
   AssetGenImage get appBarLogo =>
       const AssetGenImage('assets/images/app_bar_logo.png');
 
+  /// File path: assets/images/logo_light.png
+  AssetGenImage get logoLight =>
+      const AssetGenImage('assets/images/logo_light.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [appBarLogo];
+  List<AssetGenImage> get values => [appBarLogo, logoLight];
 }
 
 abstract final class Assets {
