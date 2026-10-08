@@ -1,6 +1,8 @@
+import 'package:evently_app/auth/login/login_screen.dart';
 import 'package:evently_app/common/app_text_styles.dart';
 import 'package:evently_app/gen/assets.gen.dart';
 import 'package:evently_app/widgets/custom_text_form_feild.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -12,7 +14,7 @@ static const String routeName="/registerScreen";
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  GlobalKey<FormState> _formState = GlobalKey();
+  final GlobalKey<FormState> _formState = GlobalKey();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
@@ -106,7 +108,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   RichText(text: TextSpan(
                     children: [
                       TextSpan(text: "Already have an account? ",                  style: AppTextStyles.styleS14W400(color: Theme.of(context).hoverColor)),
-                      TextSpan(text:"Login",style: AppTextStyles.styleS14W400(color: Theme.of(context).shadowColor).copyWith(decoration: TextDecoration.underline,fontStyle: FontStyle.italic) )
+                      TextSpan(
+                        recognizer: TapGestureRecognizer()..onTap=(){
+                          Navigator.of(context).pushNamed(LoginScreen.routeName);
+                        }
+                        ,
+                        text:"Login",style: AppTextStyles.styleS14W400(color: Theme.of(context).shadowColor).copyWith(decoration: TextDecoration.underline,fontStyle: FontStyle.italic) )
                     ],
                     style: AppTextStyles.styleS14W400(color: Theme.of(context).shadowColor)
                   )

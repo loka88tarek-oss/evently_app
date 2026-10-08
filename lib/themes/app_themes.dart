@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class AppThemes {
   static ThemeData lightTheme = ThemeData(
+    cardColor: AppColors.lightMainColor,
     dividerColor: AppColors.lightInputTextFeildBorderColor,
     hoverColor: AppColors.lightSecTextColor,
     splashColor: AppColors.lightTextFeildFillColor,
@@ -41,6 +42,7 @@ class AppThemes {
     )
   );
   static ThemeData darkTheme = ThemeData(
+      cardColor: AppColors.darkTextColor,
     dividerColor: AppColors.darkInputTextFeildBorderColor,
       hoverColor: AppColors.darkSecTextColor,
      splashColor: AppColors.darkTextFeildFillColor,
