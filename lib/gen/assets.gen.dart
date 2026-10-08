@@ -20,14 +20,27 @@ class $AssetsIconsGen {
   /// File path: assets/icons/google.png
   AssetGenImage get google => const AssetGenImage('assets/icons/google.png');
 
+  /// File path: assets/icons/moon.svg
+  String get moon => 'assets/icons/moon.svg';
+
   /// File path: assets/icons/password_icon.svg
   String get passwordIcon => 'assets/icons/password_icon.svg';
+
+  /// File path: assets/icons/sun.svg
+  String get sun => 'assets/icons/sun.svg';
 
   /// File path: assets/icons/user.svg
   String get user => 'assets/icons/user.svg';
 
   /// List of all assets
-  List<dynamic> get values => [emailIcon, google, passwordIcon, user];
+  List<dynamic> get values => [
+    emailIcon,
+    google,
+    moon,
+    passwordIcon,
+    sun,
+    user,
+  ];
 }
 
 class $AssetsImagesGen {
@@ -37,12 +50,25 @@ class $AssetsImagesGen {
   AssetGenImage get appBarLogo =>
       const AssetGenImage('assets/images/app_bar_logo.png');
 
+  /// File path: assets/images/being-creative_onboarding1.png
+  AssetGenImage get beingCreativeOnboarding1 =>
+      const AssetGenImage('assets/images/being-creative_onboarding1.png');
+
+  /// File path: assets/images/logo_dark.png
+  AssetGenImage get logoDark =>
+      const AssetGenImage('assets/images/logo_dark.png');
+
   /// File path: assets/images/logo_light.png
   AssetGenImage get logoLight =>
       const AssetGenImage('assets/images/logo_light.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [appBarLogo, logoLight];
+  List<AssetGenImage> get values => [
+    appBarLogo,
+    beingCreativeOnboarding1,
+    logoDark,
+    logoLight,
+  ];
 }
 
 abstract final class Assets {
