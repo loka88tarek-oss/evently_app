@@ -2,6 +2,7 @@ import 'package:evently_app/auth/login/login_screen.dart';
 import 'package:evently_app/common/app_text_styles.dart';
 import 'package:evently_app/gen/assets.gen.dart';
 import 'package:evently_app/widgets/custom_text_form_feild.dart';
+import 'package:evently_app/widgets/filled_button_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -78,29 +79,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   },
                 ),
                 SizedBox(height: size.height * .07),
-                SizedBox(
-                  width: double.infinity,
-                  height: 48,
-                  child: FilledButton(
-                    style: FilledButton.styleFrom(
-                      backgroundColor: Theme.of(context).shadowColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-        
-                    onPressed: () {
-                     bool isValid = _formState.currentState!.validate();
-                     if(isValid){
-                      
-                     }
-                    },
-                    child: Text(
-                      "Sign up",
-                      style: AppTextStyles.styleS20W500(color: Colors.white),
-                    ),
-                  ),
-                ),
+               
+                FilledButtonWidget(text: "Sign up",formState: _formState,onPressed: () {
+                     bool isValid = _formState!.currentState!.validate();
+         if(isValid){
+          
+         }
+                },),
                 SizedBox(height: size.height * .05),
                 Row(
                   mainAxisAlignment: .center,
