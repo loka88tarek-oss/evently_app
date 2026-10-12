@@ -35,7 +35,9 @@ class _SplashScreenState extends State<SplashScreen> {
           Spacer(),
             Image.asset(Assets.images.splashLogo.path,color: Theme.of(context).shadowColor,),
             Spacer(),
-            Image.asset(Assets.images.routeLogo.path,color: Theme.of(context).shadowColor,),
+            Image.asset(Assets.images.routeLogo.path,width: 70,
+            height: 28,
+            color: Theme.of(context).shadowColor,),
          
             Row(
               mainAxisAlignment: .center,
