@@ -37,6 +37,7 @@ dependencies:
   flutter_gen: ^5.15.0
   flutter_svg: ^2.3.0
   flutter_native_splash: ^2.4.7
+  firebase_core: ^4.15.0
  
 
 dev_dependencies:
