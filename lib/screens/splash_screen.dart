@@ -17,7 +17,7 @@ static const String routeName = "/splashScreen";
 class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 20), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, MainOnboardingScreen.routeName);
     });
   }
@@ -32,12 +32,18 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: .stretch,
           mainAxisAlignment: .center,
           children: [
-          
+          Spacer(),
             Image.asset(Assets.images.splashLogo.path,color: Theme.of(context).shadowColor,),
             Spacer(),
             Image.asset(Assets.images.routeLogo.path,color: Theme.of(context).shadowColor,),
-            SizedBox(height: 10,),
-            Text("Supervised by Mohamed Nabil",style: AppTextStyles.styleS14W400(color:Theme.of(context).primaryColor),)
+         
+            Row(
+              mainAxisAlignment: .center,
+              
+              children: [
+                Text("Supervised by Mohamed Nabil",style: AppTextStyles.styleS14W400(color:Theme.of(context).primaryColor),),
+              ],
+            )
           ],
         ),
       ),

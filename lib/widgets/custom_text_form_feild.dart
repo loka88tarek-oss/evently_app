@@ -8,12 +8,13 @@ class CustomTextFormFeild extends StatefulWidget {
     super.key,
     this.hintText,
     required this.prefixIcon,
-    this.isPassword = false, this.validator,
+    this.isPassword = false, this.validator, this.controller,
   });
   final String? hintText;
   final String prefixIcon;
   final bool isPassword;
   final String? Function(String?)? validator;
+  final TextEditingController? controller;
   @override
   State<CustomTextFormFeild> createState() => _CustomTextFormFeildState();
 }
@@ -25,8 +26,10 @@ class _CustomTextFormFeildState extends State<CustomTextFormFeild> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
+        
+        controller:widget.controller ,
         onTapOutside: (event) {
-          Focus.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
         },
         validator:widget.validator ,
         obscureText: isPasswordEnabeled,

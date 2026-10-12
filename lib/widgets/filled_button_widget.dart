@@ -5,9 +5,8 @@ class FilledButtonWidget extends StatelessWidget {
   const FilledButtonWidget({
     super.key,
      GlobalKey<FormState>? formState, required this.text,required this.onPressed,
-  }) : _formState = formState;
+  });
 
-  final GlobalKey<FormState>? _formState;
   final String text;
 final  void Function()? onPressed;
   @override

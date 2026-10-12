@@ -1,6 +1,8 @@
 import 'package:evently_app/auth/password/forget_password_screen.dart';
 import 'package:evently_app/auth/register/register_screen.dart';
+import 'package:evently_app/auth/services/fire_base_services.dart';
 import 'package:evently_app/common/app_text_styles.dart';
+import 'package:evently_app/models/user_model.dart';
 import 'package:evently_app/widgets/filled_button_widget.dart';
 import 'package:evently_app/gen/assets.gen.dart';
 import 'package:evently_app/widgets/custom_text_form_feild.dart';
@@ -16,7 +18,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  GlobalKey<FormState> _formState = GlobalKey();
+  final GlobalKey<FormState> _formState = GlobalKey();
+  TextEditingController emailController=TextEditingController();
+    TextEditingController passwordController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
@@ -42,6 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(height: 10),
                 CustomTextFormFeild(
+                  controller: emailController,
                   hintText: "Enter your email", //TODO:localization
                   prefixIcon: Assets.icons.emailIcon,
                   validator: (value) {
@@ -51,10 +56,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
                 CustomTextFormFeild(
+                  controller: passwordController,
                   hintText: "Enter your password", //TODO:localization
                   prefixIcon: Assets.icons.passwordIcon,
                   isPassword: true,
                   validator: (value) {
+                    
                     if (value == null || value.isEmpty) {
                       return "password is required!"; //TODO:localization
                     } else if (value.length < 6) {
@@ -85,10 +92,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 SizedBox(height: size.height * .07),
-                FilledButtonWidget(formState: _formState,text: "Login",onPressed: () {
-                     bool isValid = _formState!.currentState!.validate();
+                FilledButtonWidget(formState: _formState,text: "Login",onPressed: () async{
+                     bool isValid = _formState.currentState!.validate();
          if(isValid){
-          
+          UserModel user=UserModel(email:emailController .text.trim(),password: passwordController.text);
+         await FireBaseServices.login(user);
          }
                 },),
                 SizedBox(height: size.height * .05),
