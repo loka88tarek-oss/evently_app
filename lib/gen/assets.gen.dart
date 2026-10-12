@@ -54,20 +54,20 @@ class $AssetsImagesGen {
   AssetGenImage get beingCreativeOnboarding1 =>
       const AssetGenImage('assets/images/being-creative_onboarding1.png');
 
-  /// File path: assets/images/logo_dark.png
-  AssetGenImage get logoDark =>
-      const AssetGenImage('assets/images/logo_dark.png');
+  /// File path: assets/images/route_logo.png
+  AssetGenImage get routeLogo =>
+      const AssetGenImage('assets/images/route_logo.png');
 
-  /// File path: assets/images/logo_light.png
-  AssetGenImage get logoLight =>
-      const AssetGenImage('assets/images/logo_light.png');
+  /// File path: assets/images/splash_logo.png
+  AssetGenImage get splashLogo =>
+      const AssetGenImage('assets/images/splash_logo.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
     appBarLogo,
     beingCreativeOnboarding1,
-    logoDark,
-    logoLight,
+    routeLogo,
+    splashLogo,
   ];
 }
 
