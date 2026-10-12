@@ -1,4 +1,5 @@
 import 'package:evently_app/auth/login/login_screen.dart';
+import 'package:evently_app/auth/password/forget_password_screen.dart';
 import 'package:evently_app/auth/register/register_screen.dart';
 import 'package:evently_app/onboarding/mainOnBoarding/main_onboarding_screen.dart';
 import 'package:evently_app/screens/splash_screen.dart';
