@@ -2,6 +2,7 @@ import 'package:evently_app/auth/login/login_screen.dart';
 import 'package:evently_app/auth/password/forget_password_screen.dart';
 import 'package:evently_app/auth/register/register_screen.dart';
 import 'package:evently_app/onboarding/mainOnBoarding/main_onboarding_screen.dart';
+import 'package:evently_app/screens/splash_screen.dart';
 
 import 'package:evently_app/themes/app_themes.dart';
 import 'package:flutter/material.dart';
@@ -20,14 +21,14 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
-      themeMode: ThemeMode.light, 
+      themeMode: ThemeMode.dark, 
       routes: {
-        ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
+        SplashScreen.routeName:(_)=>SplashScreen(),
         LoginScreen.routeName: (_) => LoginScreen(),
         RegisterScreen.routeName: (_) => RegisterScreen(),
         MainOnboardingScreen.routeName: (_) => MainOnboardingScreen(),
       },
-      initialRoute:  MainOnboardingScreen.routeName,
+      initialRoute:  SplashScreen.routeName,
     );
   }
 }
