@@ -5,6 +5,7 @@ import 'package:evently_app/presentation/home/tabs/home_tap/home_tap.dart';
 import 'package:evently_app/presentation/home/tabs/profile_tap/profile_tap.dart';
 import 'package:evently_app/presentation/home/widgets/event_card.dart';
 import 'package:evently_app/presentation/home/widgets/home_header.dart';
+import 'package:evently_app/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,18 +17,53 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentTabIndex=0;
-  List<Widget> tabs = [
-    const HomeTap(),
-    const FavTab(),
-    const ProfileTap(),
-  ];
+  int currentTabIndex = 0;
+  List<Widget> tabs = [const HomeTap(), const FavTab(), const ProfileTap()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HomeHeader(),
-      body:tabs[currentTabIndex],
-    
+      body: tabs[currentTabIndex],
+      
+      bottomNavigationBar: BottomNavigationBar(
+        
+        currentIndex: currentTabIndex,
+        onTap: (value) {
+          currentTabIndex = value;
+          setState(() {});
+        },
+        selectedItemColor: Theme.of(context).shadowColor,
+        unselectedItemColor: AppColors.iconTextFeildBorderColor,
+        backgroundColor: Theme.of(context).canvasColor,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border_outlined),
+            activeIcon: Icon(Icons.favorite),
+            label: "Favorite",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_2_outlined),
+            activeIcon: Icon(Icons.person_2),
+            label: "profile",
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+
+      },
+      backgroundColor: Theme.of(context).shadowColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(40)
+      ),
+      child: Icon(Icons.add,color: Colors.white,),
+      
+      ),
     );
   }
 }

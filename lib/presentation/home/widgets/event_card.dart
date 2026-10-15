@@ -56,7 +56,8 @@ class EventCard extends StatelessWidget {
                 children: [
                   Text(eventModel.title,style: AppTextStyles.styleS14W500(color: Theme.of(context).highlightColor),),
                   Spacer(),
-                  Icon(eventModel.isFav ? Icons.favorite : Icons.favorite_border, color: Theme.of(context).shadowColor,)
+                  IconButton(onPressed: (){}, icon: Icon(eventModel.isFav ? Icons.favorite : Icons.favorite_border, color: Theme.of(context).shadowColor,))
+                  
                 ],
               ),
             ),
