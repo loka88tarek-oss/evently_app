@@ -11,14 +11,18 @@ class FireBaseServices {
         email: user.email,
         password: user.password!,
       );
-      UserModel? userData=await getUserInfo(credential.user!.uid);
+      UserModel? userData=await _getUserInfo(credential.user!.uid);
       log("Success");
       return userData;
-    } catch (e) {
-      log("-------------->$e");
+    } on FirebaseAuthException catch (e) {
+     String errorMessage=_getFreindlyMessage(e.code);
+     throw errorMessage;
+    }catch(e){
+      String errorMessage="Authentication failed.PLease try again.";
+      throw errorMessage;
     }
   }
-
+  
   static Future<void> register(UserModel user) async {
     try {
      UserCredential credential= await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -26,13 +30,17 @@ class FireBaseServices {
         password: user.password!,
       );
        user.id= credential.user?.uid;
-       await createUser(user);
+       await _createUser(user);
       log("Success");
-    } catch (e) {
-      log("-------------->$e");
+    }  on FirebaseAuthException catch (e) {
+     String errorMessage=_getFreindlyMessage(e.code);
+     throw errorMessage;
+    }catch(e){
+      String errorMessage="Authentication failed.PLease try again.";
+      throw errorMessage;
     }
   }
-  static   CollectionReference<UserModel> getUserCollection(){
+  static   CollectionReference<UserModel> _getUserCollection(){
     return FirebaseFirestore.instance
         .collection("users")
         .withConverter<UserModel>(
@@ -42,15 +50,31 @@ class FireBaseServices {
         );
   }
 
-  static Future createUser(UserModel user) async {
-    CollectionReference<UserModel> collection =getUserCollection(); 
+  static Future _createUser(UserModel user) async {
+    CollectionReference<UserModel> collection =_getUserCollection(); 
     DocumentReference doc = collection.doc(user.id);
     await doc.set(user);
   }
-  static Future<UserModel?> getUserInfo(String id)async{
-     CollectionReference<UserModel> collection =getUserCollection(); 
+
+  static Future<UserModel?> _getUserInfo(String id)async{
+     CollectionReference<UserModel> collection =_getUserCollection(); 
     DocumentReference<UserModel>  doc = collection.doc(id);
     DocumentSnapshot<UserModel>  snapshot= await doc.get();
     return snapshot.data();
+  }
+  static String _getFreindlyMessage(String code){
+   switch (code) {
+    case 'invalid-email':
+     return'The email format is incorrect.';
+     
+    case 'user-not-found':
+     return'No user found for that email.';
+     
+    case 'wrong-password':
+     return'Wrong password provided.';
+     
+    default:
+     return'Authentication failed.PLease try again.';
+  }
   }
 }

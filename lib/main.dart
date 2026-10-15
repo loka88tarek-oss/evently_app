@@ -1,9 +1,10 @@
-import 'package:evently_app/auth/login/login_screen.dart';
-import 'package:evently_app/auth/password/forget_password_screen.dart';
-import 'package:evently_app/auth/register/register_screen.dart';
+import 'package:evently_app/presentation/auth/login/login_screen.dart';
+import 'package:evently_app/presentation/auth/password/forget_password_screen.dart';
+import 'package:evently_app/presentation/auth/register/register_screen.dart';
 import 'package:evently_app/firebase_options.dart';
 import 'package:evently_app/onboarding/mainOnBoarding/main_onboarding_screen.dart';
-import 'package:evently_app/screens/splash_screen.dart';
+import 'package:evently_app/presentation/home/home_screen.dart';
+import 'package:evently_app/splash_screen/splash_screen.dart';
 
 import 'package:evently_app/themes/app_themes.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,6 +34,9 @@ class MyApp extends StatelessWidget {
         LoginScreen.routeName: (_) => LoginScreen(),
         RegisterScreen.routeName: (_) => RegisterScreen(),
         MainOnboardingScreen.routeName: (_) => MainOnboardingScreen(),
+        ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
+                HomeScreen.routeName: (_) => HomeScreen(),
+
       },
       initialRoute:  SplashScreen.routeName,
     );

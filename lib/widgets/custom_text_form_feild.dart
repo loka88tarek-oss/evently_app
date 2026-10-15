@@ -33,7 +33,7 @@ class _CustomTextFormFeildState extends State<CustomTextFormFeild> {
         },
         validator:widget.validator ,
         obscureText: isPasswordEnabeled,
-        style: AppTextStyles.styleS14W400(color: Theme.of(context).hoverColor),
+        style: AppTextStyles.styleS14W400(color: Theme.of(context).primaryColor),
         decoration: InputDecoration(
           prefixIcon: Padding(
             padding: const EdgeInsets.all(16.0),

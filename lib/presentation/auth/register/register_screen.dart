@@ -1,8 +1,9 @@
-import 'package:evently_app/auth/login/login_screen.dart';
-import 'package:evently_app/auth/services/fire_base_services.dart';
+import 'package:evently_app/presentation/auth/login/login_screen.dart';
+import 'package:evently_app/presentation/auth/services/fire_base_services.dart';
 import 'package:evently_app/common/app_text_styles.dart';
 import 'package:evently_app/gen/assets.gen.dart';
 import 'package:evently_app/models/user_model.dart';
+import 'package:evently_app/themes/app_colors.dart';
 import 'package:evently_app/widgets/custom_text_form_feild.dart';
 import 'package:evently_app/widgets/filled_button_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,16 +21,22 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final GlobalKey<FormState> _formState = GlobalKey();
-  TextEditingController emailController=TextEditingController();
-    TextEditingController passwordController=TextEditingController();
-    TextEditingController rePasswordController=TextEditingController();
-    TextEditingController nameController=TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController rePasswordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Image.asset(Assets.images.appBarLogo.path)),
+        title: Center(
+          child: Image.asset(
+            Assets.images.appBarLogo.path,
+            color: Theme.of(context).shadowColor,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -44,7 +51,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Text(
                   "Create your account", //TODO:localization
                   style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                    color: Theme.of(context).shadowColor,
+                    color: Theme.of(context).cardColor,
                   ),
                 ),
                 SizedBox(height: 10),
@@ -97,16 +104,62 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 SizedBox(height: size.height * .07),
 
                 FilledButtonWidget(
+                  isLoading: isLoading,
                   text: "Sign up",
                   formState: _formState,
-                  onPressed: ()async {
-                    bool isValid = _formState.currentState!.validate();
-                    if (isValid) {
-                      UserModel user=UserModel(email: emailController.text, password: passwordController.text,name: nameController.text);
-                      await FireBaseServices.register(user);
-                    }
-                  },
-                ), // FilledButtonWidget
+                  onPressed: isLoading
+                      ? null
+                      : () async {
+                          bool isValid = _formState.currentState!.validate();
+                          if (isValid) {
+                           
+                            UserModel user = UserModel(
+                              email: emailController.text,
+                              password: passwordController.text,
+                              name: nameController.text,
+                            );
+                             setState(() {
+                              isLoading = true;
+                            });
+                            try {
+                              await FireBaseServices.register(user);
+                              if (context.mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      "Sucess,Start Login!",
+                                      style: AppTextStyles.styleS18W600(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    backgroundColor: Theme.of(context).shadowColor.withValues(alpha: .5),
+                                  ),
+                                );
+
+                                Navigator.of(context).pop();
+                              }
+                            } on String catch (e) {
+                              if (context.mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      e,
+                                      style: AppTextStyles.styleS18W600(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    backgroundColor: AppColors.errorColor,
+                                  ),
+                                );
+                              }
+                            }
+                            setState(() {
+                              isLoading = false;
+                            });
+                          }
+                        },
+                ), 
+                
                 SizedBox(height: size.height * .05),
                 Row(
                   mainAxisAlignment: .center,

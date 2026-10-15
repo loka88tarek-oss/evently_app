@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 class FilledButtonWidget extends StatelessWidget {
   const FilledButtonWidget({
     super.key,
-     GlobalKey<FormState>? formState, required this.text,required this.onPressed,
+     GlobalKey<FormState>? formState, required this.text,required this.onPressed,required  this.isLoading,
   });
 
   final String text;
+  final bool isLoading;
 final  void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,10 @@ final  void Function()? onPressed;
         ),
                 
         onPressed: onPressed,
-        child: Text(
+        child:
+        isLoading?
+        CircularProgressIndicator():
+         Text(
           text,
           style: AppTextStyles.styleS20W500(color: Colors.white),
         ),
