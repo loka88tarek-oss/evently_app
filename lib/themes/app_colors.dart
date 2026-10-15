@@ -4,8 +4,8 @@ class AppColors {
   static const Color lightMainColor=Color(0xff0E3A99);
     static const Color darkMainColor=Color(0xff457AED);
 
-    static const Color lightBgColor=Color(0xffF3F6FF);
-    static const Color darkBgColor=Color(0xff000F2E);
+    static const Color lightBgColor=Color(0xffF4F7FF);
+    static const Color darkBgColor=Color(0xff000F30);
 
  static const Color lightTextColor=Color(0xff1C1C1C);
     static const Color darkTextColor=Color(0xffFFFFFF);
@@ -25,6 +25,6 @@ class AppColors {
   static const Color iconTextFeildBorderColor=Color(0xffB9B9B9);
 
   
-  static const Color errorColor=Color.fromARGB(255, 171, 18, 18);
+  static const Color errorColor=Color(0xffFF3232);
 
 }

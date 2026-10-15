@@ -1,4 +1,4 @@
-import 'package:evently_app/auth/login/login_screen.dart';
+import 'package:evently_app/presentation/auth/login/login_screen.dart';
 import 'package:evently_app/common/app_text_styles.dart';
 import 'package:evently_app/gen/assets.gen.dart';
 import 'package:evently_app/onboarding/mainOnBoarding/widgets/container_widget.dart';
