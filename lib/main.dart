@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
-      themeMode: ThemeMode.light, 
+      themeMode: ThemeMode.dark, 
       routes: {
         SplashScreen.routeName:(_)=>SplashScreen(),
         LoginScreen.routeName: (_) => LoginScreen(),

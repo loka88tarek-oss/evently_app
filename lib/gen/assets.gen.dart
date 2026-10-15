@@ -54,9 +54,40 @@ class $AssetsImagesGen {
   AssetGenImage get beingCreativeOnboarding1 =>
       const AssetGenImage('assets/images/being-creative_onboarding1.png');
 
+  /// File path: assets/images/birthday.png
+  AssetGenImage get birthday =>
+      const AssetGenImage('assets/images/birthday.png');
+
+  /// File path: assets/images/birthday_dark.png
+  AssetGenImage get birthdayDark =>
+      const AssetGenImage('assets/images/birthday_dark.png');
+
+  /// File path: assets/images/book_club.png
+  AssetGenImage get bookClub =>
+      const AssetGenImage('assets/images/book_club.png');
+
+  /// File path: assets/images/book_club_dark.png
+  AssetGenImage get bookClubDark =>
+      const AssetGenImage('assets/images/book_club_dark.png');
+
+  /// File path: assets/images/exhibition.png
+  AssetGenImage get exhibition =>
+      const AssetGenImage('assets/images/exhibition.png');
+
+  /// File path: assets/images/exhibtion_dark.png
+  AssetGenImage get exhibtionDark =>
+      const AssetGenImage('assets/images/exhibtion_dark.png');
+
   /// File path: assets/images/forget_password.png
   AssetGenImage get forgetPassword =>
       const AssetGenImage('assets/images/forget_password.png');
+
+  /// File path: assets/images/meeting.png
+  AssetGenImage get meeting => const AssetGenImage('assets/images/meeting.png');
+
+  /// File path: assets/images/meeting_dark.png
+  AssetGenImage get meetingDark =>
+      const AssetGenImage('assets/images/meeting_dark.png');
 
   /// File path: assets/images/route_logo.png
   AssetGenImage get routeLogo =>
@@ -66,13 +97,30 @@ class $AssetsImagesGen {
   AssetGenImage get splashLogo =>
       const AssetGenImage('assets/images/splash_logo.png');
 
+  /// File path: assets/images/sport.png
+  AssetGenImage get sport => const AssetGenImage('assets/images/sport.png');
+
+  /// File path: assets/images/sport_dark.png
+  AssetGenImage get sportDark =>
+      const AssetGenImage('assets/images/sport_dark.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
     appBarLogo,
     beingCreativeOnboarding1,
+    birthday,
+    birthdayDark,
+    bookClub,
+    bookClubDark,
+    exhibition,
+    exhibtionDark,
     forgetPassword,
+    meeting,
+    meetingDark,
     routeLogo,
     splashLogo,
+    sport,
+    sportDark,
   ];
 }
 

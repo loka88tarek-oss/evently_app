@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 class AppThemes {
   static ThemeData lightTheme = ThemeData(
+    brightness: Brightness.light, 
+    highlightColor: AppColors.lightTextColor,
     primaryColor: Colors.black,
     cardColor: AppColors.lightMainColor,
     dividerColor: AppColors.lightInputTextFeildBorderColor,
@@ -11,7 +13,7 @@ class AppThemes {
     splashColor: AppColors.lightTextFeildFillColor,
     shadowColor: AppColors.lightMainColor,
     hintColor: AppColors.lightInputTextFeildBorderColor,
-    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.lightMainColor),
+    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.lightMainColor,brightness: Brightness.light, ),
     scaffoldBackgroundColor: AppColors.lightBgColor,
     appBarTheme: AppBarTheme(
       
@@ -44,6 +46,8 @@ class AppThemes {
     )
   );
   static ThemeData darkTheme = ThemeData(
+     brightness: Brightness.dark,
+    highlightColor: AppColors.darkTextColor,
       primaryColor: Colors.white,
       cardColor: AppColors.darkTextColor,
     dividerColor: AppColors.darkInputTextFeildBorderColor,
@@ -51,7 +55,7 @@ class AppThemes {
      splashColor: AppColors.darkTextFeildFillColor,
      shadowColor: AppColors.darkMainColor,
         hintColor: AppColors.darkInputTextFeildBorderColor,
-    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.darkMainColor),
+    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.darkMainColor,brightness: Brightness.dark,),
     scaffoldBackgroundColor: AppColors.darkBgColor,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.darkBgColor,

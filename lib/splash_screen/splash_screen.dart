@@ -4,6 +4,8 @@ import 'package:evently_app/presentation/auth/login/login_screen.dart';
 import 'package:evently_app/common/app_text_styles.dart';
 import 'package:evently_app/gen/assets.gen.dart';
 import 'package:evently_app/onboarding/mainOnBoarding/main_onboarding_screen.dart';
+import 'package:evently_app/presentation/home/home_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,9 +17,11 @@ static const String routeName = "/splashScreen";
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () {
+      isLoggedIn()? Navigator.pushReplacementNamed(context, HomeScreen.routeName):
       Navigator.pushReplacementNamed(context, MainOnboardingScreen.routeName);
     });
   }
@@ -52,5 +56,9 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
     );
+    
+  }
+  bool isLoggedIn(){
+   return FirebaseAuth.instance.currentUser != null ;
   }
 }
