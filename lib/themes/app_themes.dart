@@ -14,8 +14,9 @@ class AppThemes {
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.lightMainColor),
     scaffoldBackgroundColor: AppColors.lightBgColor,
     appBarTheme: AppBarTheme(
+      
       backgroundColor: AppColors.lightBgColor,
-      foregroundColor: AppColors.lightMainColor,
+      foregroundColor: AppColors.lightTextColor,
       iconTheme: IconThemeData(color: AppColors.lightMainColor),
   titleTextStyle: AppTextStyles.styleS18W500(),
     ),
@@ -54,7 +55,7 @@ class AppThemes {
     scaffoldBackgroundColor: AppColors.darkBgColor,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.darkBgColor,
-      foregroundColor: AppColors.darkMainColor,
+      foregroundColor: AppColors.darkTextColor,
       iconTheme: IconThemeData(color: AppColors.darkMainColor),
        titleTextStyle: AppTextStyles.styleS18W500(color: AppColors.darkTextColor),
     ),

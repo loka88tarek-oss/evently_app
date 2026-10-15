@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:evently_app/auth/login/login_screen.dart';
+import 'package:evently_app/presentation/auth/login/login_screen.dart';
 import 'package:evently_app/common/app_text_styles.dart';
 import 'package:evently_app/gen/assets.gen.dart';
 import 'package:evently_app/onboarding/mainOnBoarding/main_onboarding_screen.dart';
@@ -17,7 +17,7 @@ static const String routeName = "/splashScreen";
 class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 20), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, MainOnboardingScreen.routeName);
     });
   }
@@ -28,17 +28,27 @@ class _SplashScreenState extends State<SplashScreen> {
         decoration: BoxDecoration(
           color: Theme.of(context).splashColor
         ),
-        child: Column(
-          crossAxisAlignment: .stretch,
-          mainAxisAlignment: .center,
-          children: [
-          
-            Image.asset(Assets.images.splashLogo.path,color: Theme.of(context).shadowColor,),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: .stretch,
+            mainAxisAlignment: .center,
+            children: [
             Spacer(),
-            Image.asset(Assets.images.routeLogo.path,color: Theme.of(context).shadowColor,),
-            SizedBox(height: 10,),
-            Text("Supervised by Mohamed Nabil",style: AppTextStyles.styleS14W400(color:Theme.of(context).primaryColor),)
-          ],
+              Image.asset(Assets.images.splashLogo.path,color: Theme.of(context).shadowColor,),
+              Spacer(),
+              Image.asset(Assets.images.routeLogo.path,width: 70,
+              height: 28,
+              color: Theme.of(context).shadowColor,),
+           
+              Row(
+                mainAxisAlignment: .center,
+                
+                children: [
+                  Text("Supervised by Mohamed Nabil",style: AppTextStyles.styleS14W400(color:Theme.of(context).primaryColor),),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
