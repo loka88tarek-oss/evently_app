@@ -17,7 +17,7 @@ class AppThemes {
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.lightMainColor,brightness: Brightness.light, ),
     scaffoldBackgroundColor: AppColors.lightBgColor,
     appBarTheme: AppBarTheme(
-      
+      centerTitle: true,
       backgroundColor: AppColors.lightBgColor,
       foregroundColor: AppColors.lightTextColor,
       iconTheme: IconThemeData(color: AppColors.lightMainColor),

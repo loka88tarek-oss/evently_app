@@ -5,6 +5,7 @@ import 'package:evently_app/presentation/home/tabs/home_tap/home_tap.dart';
 import 'package:evently_app/presentation/home/tabs/profile_tap/profile_tap.dart';
 import 'package:evently_app/presentation/home/widgets/event_card.dart';
 import 'package:evently_app/presentation/home/widgets/home_header.dart';
+import 'package:evently_app/presentation/new_event/new_event_screen.dart';
 import 'package:evently_app/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -55,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(onPressed: (){
-
+Navigator.of(context).pushNamed(NewEventScreen.routeName);
       },
       backgroundColor: Theme.of(context).shadowColor,
       shape: RoundedRectangleBorder(

@@ -9,11 +9,11 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-
+    Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.all(8),
+      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       width: double.infinity,
-      height: 200,
+      height: size.height * .23,
       decoration: BoxDecoration(
         border: BoxBorder.all(color: Theme.of(context).dividerColor, width: 1),
         borderRadius: BorderRadius.circular(16),
@@ -29,35 +29,48 @@ class EventCard extends StatelessWidget {
           crossAxisAlignment: .start,
           children: [
             Container(
-              
-              padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: Theme.of(context).scaffoldBackgroundColor,
                 border: BoxBorder.all(
                   color: Theme.of(context).dividerColor,
                   width: 1,
                 ),
-                borderRadius: BorderRadius.circular(8)
+                borderRadius: BorderRadius.circular(8),
               ),
-              child: Text("21 Jan",style: AppTextStyles.styleS16W600(color: Theme.of(context).shadowColor),),
-        
+              child: Text(
+                "21 Jan",
+                style: AppTextStyles.styleS16W600(
+                  color: Theme.of(context).shadowColor,
+                ),
+              ),
             ),
             Container(
-              padding: EdgeInsets.all(8),
+           padding: EdgeInsets.symmetric(horizontal: 8),
               decoration: BoxDecoration(
                 color: Theme.of(context).scaffoldBackgroundColor,
                 border: BoxBorder.all(
                   color: Theme.of(context).dividerColor,
                   width: 1,
                 ),
-                borderRadius: BorderRadius.circular(8)
+                borderRadius: BorderRadius.circular(8),
               ),
               child: Row(
                 children: [
-                  Text(eventModel.title,style: AppTextStyles.styleS14W500(color: Theme.of(context).highlightColor),),
+                  Text(
+                    eventModel.title,
+                    style: AppTextStyles.styleS14W500(
+                      color: Theme.of(context).highlightColor,
+                    ),
+                  ),
                   Spacer(),
-                  IconButton(onPressed: (){}, icon: Icon(eventModel.isFav ? Icons.favorite : Icons.favorite_border, color: Theme.of(context).shadowColor,))
-                  
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      eventModel.isFav ? Icons.favorite : Icons.favorite_border,
+                      color: Theme.of(context).shadowColor,
+                    ),
+                  ),
                 ],
               ),
             ),
