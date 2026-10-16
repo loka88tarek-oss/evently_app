@@ -6,6 +6,7 @@ import 'package:evently_app/models/user_model.dart';
 import 'package:evently_app/themes/app_colors.dart';
 import 'package:evently_app/widgets/custom_text_form_feild.dart';
 import 'package:evently_app/widgets/filled_button_widget.dart';
+import 'package:evently_app/widgets/snake_bar_helper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
@@ -124,17 +125,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             try {
                               await FireBaseServices.register(user);
                               if (context.mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      "Sucess,Start Login!",
-                                      style: AppTextStyles.styleS18W600(
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    backgroundColor: Theme.of(context).shadowColor.withValues(alpha: .5),
-                                  ),
-                                );
+SnakeBarHelper.sucessSnakeBar(context, "Sucess,Start Login!");
 
                                 Navigator.of(context).pop();
                               }

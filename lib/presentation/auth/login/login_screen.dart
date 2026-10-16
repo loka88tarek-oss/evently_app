@@ -8,6 +8,7 @@ import 'package:evently_app/themes/app_colors.dart';
 import 'package:evently_app/widgets/filled_button_widget.dart';
 import 'package:evently_app/gen/assets.gen.dart';
 import 'package:evently_app/widgets/custom_text_form_feild.dart';
+import 'package:evently_app/widgets/snake_bar_helper.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -121,17 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   await FireBaseServices.login(user);
                               if (userData != null) {
                                 if (context.mounted) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        "Login successful",
-                                        style: AppTextStyles.styleS18W600(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      backgroundColor: Theme.of(context).shadowColor.withValues(alpha: 0.5),
-                                    ),
-                                  );
+                                  SnakeBarHelper.sucessSnakeBar(context, "Login Successful!!");
                                 }
                                 Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
                               }

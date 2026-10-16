@@ -39,4 +39,15 @@ enum CategoryEnum {
         return Icons.directions_bike_outlined;
     }
   }
+String toJson(){
+  return title;
+}
+static CategoryEnum fromJson(String jsonName){
+  for (var i = 0; i < CategoryEnum.values.length; i++) {
+    if (CategoryEnum.values[i].title==jsonName) {
+      return CategoryEnum.values[i];
+    }
+  }
+  return CategoryEnum.birthday;
+}
 }

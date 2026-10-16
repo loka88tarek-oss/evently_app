@@ -1,20 +1,23 @@
 import 'package:evently_app/enums/category_enum.dart';
 import 'package:evently_app/gen/assets.gen.dart';
 import 'package:evently_app/presentation/home/widgets/category_card.dart';
+import 'package:evently_app/presentation/provider/new_event_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class CategoriesSection extends StatefulWidget {
+class CategoriesSection extends StatelessWidget {
   const CategoriesSection({super.key, required this.isDark});
   final bool isDark;
   @override
-  State<CategoriesSection> createState() => _CategoriesSectionState();
-}
-
-class _CategoriesSectionState extends State<CategoriesSection> {
-  CategoryEnum selectedCategory = CategoryEnum.birthday;
-
-  @override
   Widget build(BuildContext context) {
+    NewEventProvider providerListen = Provider.of<NewEventProvider>(
+      context,
+      listen: true,
+    );
+    NewEventProvider providerRead = Provider.of<NewEventProvider>(
+      context,
+      listen: false,
+    );
     Size size = MediaQuery.of(context).size;
     return Column(
       spacing: 16,
@@ -29,7 +32,9 @@ class _CategoriesSectionState extends State<CategoriesSection> {
             ),
             borderRadius: BorderRadius.circular(16),
             image: DecorationImage(
-              image: AssetImage(selectedCategory.getImage(widget.isDark)),
+              image: AssetImage(
+                providerListen.selectedCategory.getImage(isDark),
+              ),
               fit: BoxFit.cover,
             ),
           ),
@@ -45,12 +50,11 @@ class _CategoriesSectionState extends State<CategoriesSection> {
                 (e) => CategoryCard(
                   onSelect: (p0) {
                     if (p0 != null) {
-                      selectedCategory = p0;
-                      setState(() {});
+                      providerRead.changeCategory(p0);
                     }
                   },
                   categoryEnum: e,
-                  isSelected: e == selectedCategory,
+                  isSelected: e == providerListen.selectedCategory,
                 ),
               ),
             ],

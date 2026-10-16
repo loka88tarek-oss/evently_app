@@ -1,6 +1,7 @@
 import 'package:evently_app/common/app_text_styles.dart';
 import 'package:evently_app/models/event_model.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class EventCard extends StatelessWidget {
   const EventCard({super.key, required this.eventModel});
@@ -39,7 +40,7 @@ class EventCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
-                "21 Jan",
+                "${eventModel.dateValue.day} ${DateFormat("MMM").format(eventModel.dateValue)}",
                 style: AppTextStyles.styleS16W600(
                   color: Theme.of(context).shadowColor,
                 ),

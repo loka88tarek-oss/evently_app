@@ -19,12 +19,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentTabIndex = 0;
-  List<Widget> tabs = [const HomeTap(), const FavTab(), const ProfileTap()];
+  List<Widget> tabs() => [ HomeTap(),  FavTab(),  ProfileTap()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HomeHeader(),
-      body: tabs[currentTabIndex],
+      body: tabs()[currentTabIndex],
       
       bottomNavigationBar: BottomNavigationBar(
         
@@ -55,8 +55,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
-Navigator.of(context).pushNamed(NewEventScreen.routeName);
+      floatingActionButton: FloatingActionButton(onPressed: ()async{
+ var data=  await Navigator.of(context).pushNamed(NewEventScreen.routeName);
+ if (data==true) {
+   setState(() {
+     
+   });
+ }
       },
       backgroundColor: Theme.of(context).shadowColor,
       shape: RoundedRectangleBorder(
