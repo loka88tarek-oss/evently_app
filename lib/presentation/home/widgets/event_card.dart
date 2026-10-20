@@ -1,7 +1,11 @@
 import 'package:evently_app/common/app_text_styles.dart';
 import 'package:evently_app/models/event_model.dart';
+import 'package:evently_app/presentation/auth/services/event_service.dart';
+import 'package:evently_app/presentation/home/tabs/home_tap/home_provider/home_tab_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class EventCard extends StatelessWidget {
   const EventCard({super.key, required this.eventModel});
@@ -30,7 +34,7 @@ class EventCard extends StatelessWidget {
           crossAxisAlignment: .start,
           children: [
             Container(
-            padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: Theme.of(context).scaffoldBackgroundColor,
                 border: BoxBorder.all(
@@ -47,7 +51,7 @@ class EventCard extends StatelessWidget {
               ),
             ),
             Container(
-           padding: EdgeInsets.symmetric(horizontal: 8),
+              padding: EdgeInsets.symmetric(horizontal: 8),
               decoration: BoxDecoration(
                 color: Theme.of(context).scaffoldBackgroundColor,
                 border: BoxBorder.all(
@@ -66,7 +70,23 @@ class EventCard extends StatelessWidget {
                   ),
                   Spacer(),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      if (eventModel.isFav) {
+                        (eventModel.favorites ?? []).remove(
+                          FirebaseAuth.instance.currentUser?.uid,
+                        );
+                      } else {
+                        eventModel.favorites = [
+                          ...eventModel.favorites ?? [],
+                          FirebaseAuth.instance.currentUser?.uid ?? '',
+                        ];
+                      }
+                      Provider.of<EventsProvider>(
+                        context,
+                        listen: false,
+                      ).updateEvent(eventModel);
+                      await EventService.updateFav(eventModel);
+                    },
                     icon: Icon(
                       eventModel.isFav ? Icons.favorite : Icons.favorite_border,
                       color: Theme.of(context).shadowColor,
