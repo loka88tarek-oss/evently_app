@@ -20,6 +20,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/google.png
   AssetGenImage get google => const AssetGenImage('assets/icons/google.png');
 
+  /// File path: assets/icons/logout_icon.svg
+  String get logoutIcon => 'assets/icons/logout_icon.svg';
+
   /// File path: assets/icons/moon.svg
   String get moon => 'assets/icons/moon.svg';
 
@@ -36,6 +39,7 @@ class $AssetsIconsGen {
   List<dynamic> get values => [
     emailIcon,
     google,
+    logoutIcon,
     moon,
     passwordIcon,
     sun,
@@ -89,9 +93,25 @@ class $AssetsImagesGen {
   AssetGenImage get meetingDark =>
       const AssetGenImage('assets/images/meeting_dark.png');
 
+  /// File path: assets/images/onboaarding2.png
+  AssetGenImage get onboaarding2 =>
+      const AssetGenImage('assets/images/onboaarding2.png');
+
+  /// File path: assets/images/onboarding1.png
+  AssetGenImage get onboarding1 =>
+      const AssetGenImage('assets/images/onboarding1.png');
+
+  /// File path: assets/images/onboarding3.png
+  AssetGenImage get onboarding3 =>
+      const AssetGenImage('assets/images/onboarding3.png');
+
   /// File path: assets/images/route_logo.png
   AssetGenImage get routeLogo =>
       const AssetGenImage('assets/images/route_logo.png');
+
+  /// File path: assets/images/route_profile.png
+  AssetGenImage get routeProfile =>
+      const AssetGenImage('assets/images/route_profile.png');
 
   /// File path: assets/images/splash_logo.png
   AssetGenImage get splashLogo =>
@@ -117,7 +137,11 @@ class $AssetsImagesGen {
     forgetPassword,
     meeting,
     meetingDark,
+    onboaarding2,
+    onboarding1,
+    onboarding3,
     routeLogo,
+    routeProfile,
     splashLogo,
     sport,
     sportDark,
