@@ -1,3 +1,4 @@
+import 'package:evently_app/onboarding/onboardingScreens/onboardingScreen.dart';
 import 'package:evently_app/presentation/auth/login/login_screen.dart';
 import 'package:evently_app/common/app_text_styles.dart';
 import 'package:evently_app/gen/assets.gen.dart';
@@ -14,8 +15,8 @@ class MainOnboardingScreen extends StatefulWidget {
 }
 
 class _MainOnboardingScreenState extends State<MainOnboardingScreen> {
- String selectedLang = 'en';
-bool isDark = false;
+  String selectedLang = 'en';
+  bool isDark = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
@@ -60,18 +61,15 @@ bool isDark = false;
                 Spacer(),
                 InkWell(
                   onTap: () {
-                    
                     setState(() {
-                      selectedLang="en";
+                      selectedLang = "en";
                     });
                   },
                   child: ContainerWidget(
                     size: size,
                     childClicked: Text(
                       "English", //TODO LOCALIZATION
-                      style: AppTextStyles.styleS14W600(
-                        color: Colors.white,
-                      ),
+                      style: AppTextStyles.styleS14W600(color: Colors.white),
                     ),
                     isClicked: selectedLang == 'en',
                     childNotClicked: Text(
@@ -85,20 +83,17 @@ bool isDark = false;
                 SizedBox(width: size.width * .01),
                 InkWell(
                   onTap: () {
-                   
                     setState(() {
-                      selectedLang="ar";
+                      selectedLang = "ar";
                     });
                   },
                   child: ContainerWidget(
                     size: size,
                     childClicked: Text(
                       "Arabic", //TODO LOCALIZATION
-                      style: AppTextStyles.styleS14W600(
-                        color: Colors.white,
-                      ),
+                      style: AppTextStyles.styleS14W600(color: Colors.white),
                     ),
-                    isClicked: selectedLang=="ar",
+                    isClicked: selectedLang == "ar",
                     childNotClicked: Text(
                       "Arabic", //TODO LOCALIZATION
                       style: AppTextStyles.styleS14W600(
@@ -109,8 +104,8 @@ bool isDark = false;
                 ),
               ],
             ),
-            
-             SizedBox(height: size.height * .025),
+
+            SizedBox(height: size.height * .025),
             Row(
               children: [
                 Text(
@@ -122,9 +117,8 @@ bool isDark = false;
                 Spacer(),
                 InkWell(
                   onTap: () {
-                    
                     setState(() {
-                      isDark=false;
+                      isDark = false;
                     });
                   },
                   child: ContainerWidget(
@@ -149,9 +143,8 @@ bool isDark = false;
                 SizedBox(width: size.width * .01),
                 InkWell(
                   onTap: () {
-                    
                     setState(() {
-                      isDark=true;
+                      isDark = true;
                     });
                   },
                   child: ContainerWidget(
@@ -175,7 +168,7 @@ bool isDark = false;
                 ),
               ],
             ),
-           
+
             SizedBox(height: size.height * .03),
             SizedBox(
               width: double.infinity,
@@ -189,7 +182,9 @@ bool isDark = false;
                 ),
 
                 onPressed: () {
-                  Navigator.of(context).pushNamed(LoginScreen.routeName);
+                  Navigator.of(
+                    context,
+                  ).popAndPushNamed(Onboardingscreen.routeName);
                 },
                 child: Text(
                   "Let's start",
@@ -202,5 +197,4 @@ bool isDark = false;
       ),
     );
   }
- 
 }

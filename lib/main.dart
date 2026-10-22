@@ -1,4 +1,4 @@
-import 'package:evently_app/onboarding/onboarding_screens/onboarding1.dart';
+import 'package:evently_app/onboarding/onboardingScreens/onboardingScreen.dart';
 import 'package:evently_app/presentation/auth/login/login_screen.dart';
 import 'package:evently_app/presentation/auth/password/forget_password_screen.dart';
 import 'package:evently_app/presentation/auth/register/register_screen.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       routes: {
         SplashScreen.routeName: (_) => SplashScreen(),
         LoginScreen.routeName: (_) => LoginScreen(),
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         ForgetPasswordScreen.routeName: (_) => ForgetPasswordScreen(),
         HomeScreen.routeName: (_) => HomeScreen(),
         NewEventScreen.routeName: (_) => NewEventScreen(),
-       
+        Onboardingscreen.routeName: (_) => Onboardingscreen(),
       },
       initialRoute: SplashScreen.routeName,
     );
