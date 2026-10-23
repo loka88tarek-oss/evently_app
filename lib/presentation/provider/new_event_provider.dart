@@ -1,4 +1,5 @@
 import 'package:evently_app/enums/category_enum.dart';
+import 'package:evently_app/models/event_model.dart';
 import 'package:flutter/material.dart';
 
 class NewEventProvider extends ChangeNotifier {
@@ -21,7 +22,8 @@ void changeTime(TimeOfDay time){
   void changeCategory(CategoryEnum category){
    selectedCategory=category;
    notifyListeners();
-  } 
+  }
+
   int getFormattedDate(){
     if (eventSelectedDate==null||eventSelectedTime==null) {
       return 0;

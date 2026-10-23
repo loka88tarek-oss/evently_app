@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 class HomeTap extends StatelessWidget {
   const HomeTap({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     EventsProvider provider = Provider.of<EventsProvider>(context);
@@ -21,13 +21,10 @@ class HomeTap extends StatelessWidget {
     if (provider.errorMessage != null) {
       return Center(child: Text(provider.errorMessage.toString()));
     }
-    List<EventModel> events = provider.events;
+    List<EventModel> events = provider.filteredEvents;
     return RefreshIndicator(
       onRefresh: () {
-         return Provider.of<EventsProvider>(
-                  context,
-                  listen: false,
-                ).getEvent();
+        return Provider.of<EventsProvider>(context, listen: false).getEvent();
       },
       child: ListView.builder(
         itemCount: events.length,

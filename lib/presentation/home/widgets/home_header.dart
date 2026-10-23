@@ -4,9 +4,11 @@ import 'package:evently_app/enums/category_enum.dart';
 import 'package:evently_app/gen/assets.gen.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/presentation/home/widgets/category_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:evently_app/presentation/home/tabs/home_tap/home_provider/home_tab_provider.dart';
 
 class HomeHeader extends StatefulWidget implements PreferredSizeWidget {
   const HomeHeader({super.key});
@@ -20,12 +22,12 @@ class HomeHeader extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _HomeHeaderState extends State<HomeHeader> {
-  
   bool isClicked = false;
-  CategoryEnum? selectedCategory;
+
   @override
   Widget build(BuildContext context) {
-     final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context)!;
+    final eventsProvider = context.watch<EventsProvider>();
     ThemeData theme = Theme.of(context);
     return SafeArea(
       child: Padding(
@@ -46,7 +48,7 @@ class _HomeHeaderState extends State<HomeHeader> {
                       ),
                     ),
                     Text(
-                      l10n.name,
+                      FirebaseAuth.instance.currentUser?.displayName ?? '',
                       style: theme.textTheme.titleSmall!.copyWith(
                         color: theme.highlightColor,
                       ),
@@ -62,8 +64,10 @@ class _HomeHeaderState extends State<HomeHeader> {
                         context.read<AppProvider>().changeTheme();
                       },
                       icon: SvgPicture.asset(
-                        Theme.of(context).colorScheme.brightness==Brightness.light?Assets.icons.moon:
-                        Assets.icons.sun,
+                        Theme.of(context).colorScheme.brightness ==
+                                Brightness.light
+                            ? Assets.icons.moon
+                            : Assets.icons.sun,
                         colorFilter: ColorFilter.mode(
                           theme.shadowColor,
                           BlendMode.srcIn,
@@ -86,7 +90,6 @@ class _HomeHeaderState extends State<HomeHeader> {
                           ),
                         ),
                         child: Text(
-                          
                           context.watch<AppProvider>().local,
                           style: AppTextStyles.styleS14W400(
                             color: Colors.white,
@@ -104,22 +107,16 @@ class _HomeHeaderState extends State<HomeHeader> {
                 scrollDirection: .horizontal,
                 children: [
                   CategoryCard(
-                    onSelect: (p0) {
-                      selectedCategory = null;
-                      setState(() {});
-                    },
-                    isSelected: selectedCategory == null,
+                    onSelect: (p0) => eventsProvider.changeCategory(null),
+                    isSelected: eventsProvider.selectedCategory == null,
                     categoryEnum: null,
                     isAll: true,
                   ),
                   ...CategoryEnum.values.map(
                     (e) => CategoryCard(
-                      onSelect: (p0) {
-                        selectedCategory = p0;
-                        setState(() {});
-                      },
+                      onSelect: (p0) => eventsProvider.changeCategory(p0),
                       categoryEnum: e,
-                      isSelected: selectedCategory == e,
+                      isSelected: eventsProvider.selectedCategory == e,
                     ),
                   ),
                 ],

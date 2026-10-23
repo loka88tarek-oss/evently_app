@@ -1,8 +1,12 @@
 import 'package:evently_app/app_provider/app_provider.dart';
 import 'package:evently_app/gen/assets.gen.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
+import 'package:evently_app/presentation/auth/login/login_screen.dart';
+import 'package:evently_app/presentation/auth/services/fire_base_services.dart';
+import 'package:evently_app/presentation/home/tabs/home_tap/home_provider/home_tab_provider.dart';
 import 'package:evently_app/presentation/home/tabs/profile_tap/widgets/profile_container_widget.dart';
 import 'package:evently_app/themes/app_colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +21,7 @@ class ProfileTap extends StatefulWidget {
 class _ProfileTapState extends State<ProfileTap> {
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     final l10n = AppLocalizations.of(context)!;
     bool isDark = false;
     Size size = MediaQuery.sizeOf(context);
@@ -48,7 +53,7 @@ class _ProfileTapState extends State<ProfileTap> {
               SizedBox(height: 20),
               Center(
                 child: Text(
-                  "John Safwat", //TODO:LOCALIZATION
+                  user?.displayName ?? '', //TODO:LOCALIZATION
                   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                     color: Theme.of(context).highlightColor,
                   ),
@@ -56,7 +61,7 @@ class _ProfileTapState extends State<ProfileTap> {
               ),
               Center(
                 child: Text(
-                  "johnsafwat.route@gmail.com",
+                  user?.email ?? '',
                   style: Theme.of(context).textTheme.labelSmall!.copyWith(
                     color: Theme.of(context).hoverColor,
                   ),
@@ -74,7 +79,7 @@ class _ProfileTapState extends State<ProfileTap> {
                     if (states.contains(WidgetState.selected)) {
                       return const Color(0xFF4A7BE8);
                     }
-                    return const Color(0xFFE6E6EA); 
+                    return const Color(0xFFE6E6EA);
                   }),
                   trackOutlineColor: const WidgetStatePropertyAll(
                     Colors.transparent,
@@ -101,11 +106,44 @@ class _ProfileTapState extends State<ProfileTap> {
               SizedBox(height: 16),
               ProfileContainerWidget(
                 text: l10n.logout,
-                child: SvgPicture.asset(
-                  Assets.icons.logoutIcon,
-                  colorFilter: ColorFilter.mode(
-                    AppColors.errorColor,
-                    BlendMode.srcIn,
+                child: InkWell(
+                  onTap: () async {
+                    final confirm = await showDialog<bool>(
+                      context: context,
+                      builder: (ctx) {
+                        return AlertDialog(
+                          title: Text("Do you want to Logout?!"),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(ctx, true),
+                              child: Text("Yes"),
+                            ),
+                            TextButton(
+                              onPressed: () => Navigator.pop(ctx, false),
+                              child: Text("cancle"),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+
+                    if (confirm == true) {
+                      await FireBaseServices.logOut();
+                      if (!context.mounted) return;
+                      context.read<EventsProvider>();
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        LoginScreen.routeName, // use your login route name
+                        (route) => false,
+                      );
+                    }
+                  },
+                  child: SvgPicture.asset(
+                    Assets.icons.logoutIcon,
+                    colorFilter: ColorFilter.mode(
+                      AppColors.errorColor,
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ),
               ),

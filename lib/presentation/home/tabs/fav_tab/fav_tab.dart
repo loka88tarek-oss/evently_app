@@ -34,7 +34,13 @@ class _FavTabState extends State<FavTab> {
     if (provider.errorMessageFav != null) {
       return Center(child: Text(provider.errorMessageFav.toString()));
     }
-    List<EventModel> events = provider.eventsFav;
+    List<EventModel> events = provider.eventsFav
+        .where(
+          (event) => event.title.toLowerCase().contains(
+            searchText.trim().toLowerCase(),
+          ),
+        )
+        .toList();
     return SafeArea(
       child: Column(
         crossAxisAlignment: .stretch,
@@ -42,11 +48,9 @@ class _FavTabState extends State<FavTab> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
-              
-              
               keyboardAppearance: Brightness.dark,
               keyboardType: TextInputType.text,
-                  
+
               onChanged: (value) {
                 searchText = value;
                 setState(() {});
@@ -57,16 +61,20 @@ class _FavTabState extends State<FavTab> {
                 fontWeight: .w700,
               ),
               decoration: InputDecoration(
-                suffixIcon: Icon(Icons.search_outlined,size: 25,color: Theme.of(context).shadowColor,),
+                suffixIcon: Icon(
+                  Icons.search_outlined,
+                  size: 25,
+                  color: Theme.of(context).shadowColor,
+                ),
                 filled: true,
                 fillColor: Theme.of(context).splashColor,
                 hint: Text(
-                 l10n.searchForEvent,
+                  l10n.searchForEvent,
                   style: Theme.of(context).textTheme.labelSmall!.copyWith(
                     color: Theme.of(context).hoverColor,
                   ),
                 ),
-                  
+
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Theme.of(context).dividerColor),
                   borderRadius: BorderRadius.circular(10),
@@ -82,7 +90,7 @@ class _FavTabState extends State<FavTab> {
               ),
             ),
           ),
-      
+
           Expanded(
             child: RefreshIndicator(
               onRefresh: () {
@@ -94,7 +102,7 @@ class _FavTabState extends State<FavTab> {
               child: ListView.builder(
                 itemCount: events.length,
                 itemBuilder: (context, index) =>
-                    EventCard(eventModel: events[index],),
+                    EventCard(eventModel: events[index]),
               ),
             ),
           ),

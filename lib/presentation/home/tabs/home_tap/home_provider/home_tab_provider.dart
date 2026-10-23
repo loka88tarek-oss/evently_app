@@ -1,3 +1,4 @@
+import 'package:evently_app/enums/category_enum.dart';
 import 'package:evently_app/models/event_model.dart';
 import 'package:evently_app/presentation/auth/services/event_service.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,8 @@ class EventsProvider extends ChangeNotifier {
   List<EventModel> events = [];
   bool isLoading = false;
   String? errorMessage;
+  CategoryEnum? selectedCategory;
+
 
   List<EventModel> eventsFav = [];
   bool isLoadingFav = false;
@@ -34,6 +37,16 @@ class EventsProvider extends ChangeNotifier {
     }
     isLoadingFav = false;
     notifyListeners();
+  }
+
+  void changeCategory(CategoryEnum? category) {
+    selectedCategory = category;
+    notifyListeners();
+  }
+
+  List<EventModel> get filteredEvents {
+    if (selectedCategory == null) return events;
+    return events.where((e) => e.categoryEnum == selectedCategory).toList();
   }
 
   void updateEvent(EventModel event) {

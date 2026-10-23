@@ -25,7 +25,16 @@ class EventService {
       throw "Something went wrong";
     }
   }
-
+    static Future<void> deleteEvent(EventModel event) async {
+    try {
+      CollectionReference<EventModel> collection = _getEventCollection();
+    
+      await collection.doc(event.id).delete();
+    } on Exception catch (e) {
+      print("Error in deleteEvent: $e");
+      throw "Something went wrong";
+    }
+  }
   static Future<List<EventModel>?> getAllEvents() async {
     try {
       CollectionReference<EventModel> collection = _getEventCollection();
@@ -37,6 +46,14 @@ class EventService {
       throw "Something went wrong";
     }
   }
+static Future<void> updateEvent(EventModel event) async {
+  try {
+    await _getEventCollection().doc(event.id).set(event);
+  } on Exception catch (e) {
+    print("Error in updateEvent: $e");
+    throw "Something went wrong";
+  }
+}
 
   static Future updateFav(EventModel event) async {
     CollectionReference<EventModel> collection = _getEventCollection();

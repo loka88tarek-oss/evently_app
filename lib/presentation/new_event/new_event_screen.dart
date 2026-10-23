@@ -46,18 +46,16 @@ class _NewEventScreenState extends State<NewEventScreen> {
           );
           return Scaffold(
             appBar: AppBar(
-              leading: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: AppBarIconWidget(
-                  containerChild: Icon(Icons.arrow_back_ios_new_outlined),
-                  onPressed: () {
-                    Navigator.of(
-                      context,
-                    ).pushReplacementNamed(HomeScreen.routeName);
-                  },
-                ),
+              leading: AppBarIconWidget(
+                containerChild: Icon(Icons.arrow_back_ios_new_outlined),
+                onPressed: () {
+                  Navigator.of(
+                    context,
+                  ).pushReplacementNamed(HomeScreen.routeName);
+                },
               ),
               title: Text(l10n.addEvent),
+              centerTitle: true,
             ),
             body: Form(
               key: _formState,
@@ -206,7 +204,7 @@ class _NewEventScreenState extends State<NewEventScreen> {
                               context,
                               l10n.eventAdded,
                             );
-                            Navigator.of(context).pop( true,);
+                            Navigator.of(context).pop(true);
                           }
                         } on Exception catch (e) {
                           if (context.mounted) {
@@ -225,4 +223,5 @@ class _NewEventScreenState extends State<NewEventScreen> {
       ),
     );
   }
+
 }

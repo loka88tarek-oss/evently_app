@@ -6,6 +6,7 @@ import 'package:evently_app/presentation/auth/password/forget_password_screen.da
 import 'package:evently_app/presentation/auth/register/register_screen.dart';
 import 'package:evently_app/firebase_options.dart';
 import 'package:evently_app/onboarding/mainOnBoarding/main_onboarding_screen.dart';
+import 'package:evently_app/presentation/edit_event/edit_event_screen.dart';
 import 'package:evently_app/presentation/event_details/event_details.dart';
 import 'package:evently_app/presentation/home/home_screen.dart';
 import 'package:evently_app/presentation/new_event/new_event_screen.dart';
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
               NewEventScreen.routeName: (_) => NewEventScreen(),
               Onboardingscreen.routeName: (_) => Onboardingscreen(),
                EventDetails.routeName: (_) => EventDetails(),
+               EditEventScreen.routeName: (_) => EditEventScreen(),
             },
             initialRoute: SplashScreen.routeName,
           );

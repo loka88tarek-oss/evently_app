@@ -11,17 +11,20 @@ final Widget containerChild;
 final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 32,
-      height: 32,
-      decoration: BoxDecoration(
-        color: Theme.of(context).splashColor,
-        border: Border.all(color: Theme.of(context).dividerColor),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: IconButton(
-        icon:containerChild,
-        onPressed:onPressed ,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        width: 32,
+        height: 32,
+        decoration: BoxDecoration(
+          color: Theme.of(context).splashColor,
+          border: Border.all(color: Theme.of(context).dividerColor),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: IconButton(
+          icon:containerChild,
+          onPressed:onPressed ,
+        ),
       ),
     );
   }

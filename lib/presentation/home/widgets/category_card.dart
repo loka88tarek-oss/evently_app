@@ -34,6 +34,7 @@ final bool isAll;
         ),
         onSelected: (value) {
           onSelect(categoryEnum);
+          
         },
       
         selected: isSelected,
