@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 class HomeTap extends StatelessWidget {
   const HomeTap({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     EventsProvider provider = Provider.of<EventsProvider>(context);

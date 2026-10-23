@@ -3,9 +3,11 @@ import 'package:evently_app/enums/category_enum.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/models/event_model.dart';
 import 'package:evently_app/presentation/auth/services/event_service.dart';
+import 'package:evently_app/presentation/home/home_screen.dart';
 import 'package:evently_app/presentation/home/widgets/category_card.dart';
 import 'package:evently_app/presentation/new_event/widgets/categories_section.dart';
 import 'package:evently_app/presentation/provider/new_event_provider.dart';
+import 'package:evently_app/widgets/app_bar_icon_widget.dart';
 import 'package:evently_app/widgets/custom_text_form_feild.dart';
 import 'package:evently_app/widgets/filled_button_widget.dart';
 import 'package:evently_app/widgets/snake_bar_helper.dart';
@@ -43,7 +45,20 @@ class _NewEventScreenState extends State<NewEventScreen> {
             listen: false,
           );
           return Scaffold(
-            appBar: AppBar(title: Text(l10n.addEvent)),
+            appBar: AppBar(
+              leading: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: AppBarIconWidget(
+                  containerChild: Icon(Icons.arrow_back_ios_new_outlined),
+                  onPressed: () {
+                    Navigator.of(
+                      context,
+                    ).pushReplacementNamed(HomeScreen.routeName);
+                  },
+                ),
+              ),
+              title: Text(l10n.addEvent),
+            ),
             body: Form(
               key: _formState,
               child: ListView(
@@ -189,17 +204,13 @@ class _NewEventScreenState extends State<NewEventScreen> {
                           if (context.mounted) {
                             SnakeBarHelper.sucessSnakeBar(
                               context,
-                            l10n.eventAdded,
+                              l10n.eventAdded,
                             );
-                            Navigator.pop(context,true);
+                            Navigator.of(context).pop( true,);
                           }
                         } on Exception catch (e) {
-                          
                           if (context.mounted) {
-                            SnakeBarHelper.errorSnakeBar(
-                              context,
-                              e.toString(),
-                            );
+                            SnakeBarHelper.errorSnakeBar(context, e.toString());
                           }
                         }
                       }

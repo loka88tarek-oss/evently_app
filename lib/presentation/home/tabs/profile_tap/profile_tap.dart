@@ -72,9 +72,9 @@ class _ProfileTapState extends State<ProfileTap> {
                   thumbColor: const WidgetStatePropertyAll(Colors.white),
                   trackColor: WidgetStateProperty.resolveWith((states) {
                     if (states.contains(WidgetState.selected)) {
-                      return const Color(0xFF4A7BE8); // on
+                      return const Color(0xFF4A7BE8);
                     }
-                    return const Color(0xFFE6E6EA); // off
+                    return const Color(0xFFE6E6EA); 
                   }),
                   trackOutlineColor: const WidgetStatePropertyAll(
                     Colors.transparent,

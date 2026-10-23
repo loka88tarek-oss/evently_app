@@ -14,6 +14,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/edit.svg
+  String get edit => 'assets/icons/edit.svg';
+
   /// File path: assets/icons/email_icon.svg
   String get emailIcon => 'assets/icons/email_icon.svg';
 
@@ -32,17 +35,22 @@ class $AssetsIconsGen {
   /// File path: assets/icons/sun.svg
   String get sun => 'assets/icons/sun.svg';
 
+  /// File path: assets/icons/trash.svg
+  String get trash => 'assets/icons/trash.svg';
+
   /// File path: assets/icons/user.svg
   String get user => 'assets/icons/user.svg';
 
   /// List of all assets
   List<dynamic> get values => [
+    edit,
     emailIcon,
     google,
     logoutIcon,
     moon,
     passwordIcon,
     sun,
+    trash,
     user,
   ];
 }

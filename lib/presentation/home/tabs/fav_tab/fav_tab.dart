@@ -94,7 +94,7 @@ class _FavTabState extends State<FavTab> {
               child: ListView.builder(
                 itemCount: events.length,
                 itemBuilder: (context, index) =>
-                    EventCard(eventModel: events[index]),
+                    EventCard(eventModel: events[index],),
               ),
             ),
           ),
