@@ -1,0 +1,86 @@
+{
+  "@@locale": "ar",
+
+  "personalizeYourExperience": "خصّص تجربتك",
+  "personalizeDescription": "اختر السمة واللغة المفضلتين لديك لتبدأ بتجربة مريحة ومصممة خصيصاً لتناسب أسلوبك.",
+  "language": "اللغة",
+  "theme": "السمة",
+  "english": "English",
+  "arabic": "العربية",
+  "letsStart": "هيا نبدأ",
+  "skip": "تخطي",
+  "next": "التالي",
+  "getStarted": "ابدأ الآن",
+
+  "onboarding1Title": "اكتشف فعاليات تلهمك",
+  "onboarding1Description": "انغمس في عالم من الفعاليات المصممة لتناسب اهتماماتك الخاصة. سواء كنت تحب الموسيقى الحية أو ورش الفن أو التواصل المهني أو اكتشاف تجارب جديدة، لدينا ما يناسب الجميع. ستساعدك توصياتنا المختارة على الاستكشاف والتواصل والاستفادة من كل فرصة حولك.",
+  "onboarding2Title": "تنظيم الفعاليات بكل سهولة",
+  "onboarding2Description": "تخلّص من عناء تنظيم الفعاليات مع أدوات التخطيط المتكاملة لدينا. من إعداد الدعوات وإدارة الردود إلى جدولة التذكيرات وتنسيق التفاصيل، نحن نوفر لك كل ما تحتاجه. خطّط بسهولة وركّز على ما يهم – صناعة تجربة لا تُنسى لك ولضيوفك.",
+  "onboarding3Title": "تواصل مع أصدقائك وشارك اللحظات",
+  "onboarding3Description": "اجعل كل فعالية لا تُنسى بمشاركة التجربة مع الآخرين. تتيح لك منصتنا دعوة الأصدقاء وإبقاء الجميع على اطلاع والاحتفال باللحظات معاً. التقط الحماس وشاركه مع شبكتك لتعيش أجمل اللحظات من جديد وتحتفظ بالذكريات.",
+
+  "loginToYourAccount": "سجّل الدخول إلى حسابك",
+  "enterYourEmail": "أدخل بريدك الإلكتروني",
+  "enterYourPassword": "أدخل كلمة المرور",
+  "forgetPasswordQuestion": "نسيت كلمة المرور؟",
+  "login": "تسجيل الدخول",
+  "dontHaveAccount": "ليس لديك حساب؟",
+  "signup": "إنشاء حساب",
+  "or": "أو",
+  "loginWithGoogle": "تسجيل الدخول عبر Google",
+
+  "emailRequired": "البريد الإلكتروني مطلوب!",
+  "passwordRequired": "كلمة المرور مطلوبة!",
+  "passwordMinLength": "يجب أن تكون كلمة المرور 6 أحرف على الأقل!",
+   
+   "nameRequired": "الاسم مطلوب!",
+   "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين!",
+
+  "loginSuccessful": "تم تسجيل الدخول بنجاح!!",
+   "registerSuccess": "تم بنجاح، ابدأ تسجيل الدخول!",
+
+  "createYourAccount": "أنشئ حسابك",
+  "enterYourName": "أدخل اسمك",
+  "confirmYourPassword": "أكّد كلمة المرور",
+  "signUp": "إنشاء حساب",
+  "alreadyHaveAccount": "لديك حساب بالفعل؟",
+  "signUpWithGoogle": "إنشاء حساب عبر Google",
+
+  "forgetPassword": "نسيت كلمة المرور",
+  "resetPassword": "إعادة تعيين كلمة المرور",
+
+  "addEvent": "إضافة فعالية",
+  "editEvent": "تعديل الفعالية",
+  "updateEvent": "تحديث الفعالية",
+  "eventDetails": "تفاصيل الفعالية",
+  "title": "العنوان",
+  "eventTitle": "عنوان الفعالية",
+  "description": "الوصف",
+  "eventDescription": "وصف الفعالية...",
+  "eventDate": "تاريخ الفعالية",
+  "chooseDate": "اختر التاريخ",
+  "eventTime": "وقت الفعالية",
+  "chooseTime": "اختر الوقت",
+    
+  "eventTitleRequired": "من فضلك أدخل عنوان الفعالية",
+  "dateRequired": "التاريخ مطلوب!",
+  "timeRequired": "الوقت مطلوب!",
+  "eventAdded": "تمت إضافة الفعالية!!",
+
+
+  "all": "الكل",
+  "bookClub": "نادي الكتاب",
+  "sport": "رياضة",
+  "birthday": "عيد ميلاد",
+  "meeting": "اجتماع",
+  "exhibition": "معرض",
+
+  "welcomeBack": "مرحباً بعودتك",
+  "searchForEvent": "ابحث عن فعالية",
+  "home": "الرئيسية",
+  "name": "الاسم",
+  "favorite": "المفضلة",
+  "profile": "الملف الشخصي",
+  "darkMode": "الوضع الداكن",
+  "logout": "تسجيل الخروج"
+}

@@ -1,3 +1,4 @@
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/models/event_model.dart';
 import 'package:evently_app/presentation/auth/services/event_service.dart';
 import 'package:evently_app/presentation/home/tabs/home_tap/home_provider/home_tab_provider.dart';
@@ -24,6 +25,7 @@ class _FavTabState extends State<FavTab> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     EventsProvider provider = Provider.of<EventsProvider>(context);
 
     if (provider.isLoadingFav) {
@@ -59,7 +61,7 @@ class _FavTabState extends State<FavTab> {
                 filled: true,
                 fillColor: Theme.of(context).splashColor,
                 hint: Text(
-                  "Search for event",
+                 l10n.searchForEvent,
                   style: Theme.of(context).textTheme.labelSmall!.copyWith(
                     color: Theme.of(context).hoverColor,
                   ),

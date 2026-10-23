@@ -1,5 +1,6 @@
 import 'package:evently_app/common/app_text_styles.dart';
 import 'package:evently_app/enums/category_enum.dart';
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/models/event_model.dart';
 import 'package:evently_app/presentation/auth/services/event_service.dart';
 import 'package:evently_app/presentation/home/widgets/category_card.dart';
@@ -26,6 +27,7 @@ class _NewEventScreenState extends State<NewEventScreen> {
   final GlobalKey<FormState> _formState = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     Size size = MediaQuery.of(context).size;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return ChangeNotifierProvider(
@@ -41,7 +43,7 @@ class _NewEventScreenState extends State<NewEventScreen> {
             listen: false,
           );
           return Scaffold(
-            appBar: AppBar(title: Text("Add event")),
+            appBar: AppBar(title: Text(l10n.addEvent)),
             body: Form(
               key: _formState,
               child: ListView(
@@ -54,18 +56,18 @@ class _NewEventScreenState extends State<NewEventScreen> {
                   CustomTextFormFeild(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "Please enter event title";
+                        return l10n.eventTitleRequired;
                       }
                       return null;
                     },
                     controller: titleController,
-                    hintText: "Event Title",
-                    title: "Title",
+                    hintText: l10n.eventTitle,
+                    title: l10n.title,
                   ),
                   CustomTextFormFeild(
                     controller: descriptionController,
-                    hintText: "Event Description....",
-                    title: "Description",
+                    hintText: l10n.eventDescription,
+                    title: l10n.description,
                     maxLines: 5,
                   ),
                   SizedBox(height: 16),
@@ -77,7 +79,7 @@ class _NewEventScreenState extends State<NewEventScreen> {
                         color: Theme.of(context).shadowColor,
                       ),
                       Text(
-                        "Event Date",
+                        l10n.eventDate,
                         style: AppTextStyles.styleS16W500(
                           color: Theme.of(context).highlightColor,
                         ),
@@ -102,7 +104,7 @@ class _NewEventScreenState extends State<NewEventScreen> {
                               ? DateFormat.yMMMMd().format(
                                   providerListen.eventSelectedDate!,
                                 )
-                              : "Choose date",
+                              : l10n.chooseDate,
 
                           style: Theme.of(context).textTheme.labelSmall!
                               .copyWith(
@@ -123,7 +125,7 @@ class _NewEventScreenState extends State<NewEventScreen> {
                         color: Theme.of(context).shadowColor,
                       ),
                       Text(
-                        "Event Time",
+                        l10n.eventTime,
                         style: AppTextStyles.styleS16W500(
                           color: Theme.of(context).highlightColor,
                         ),
@@ -144,7 +146,7 @@ class _NewEventScreenState extends State<NewEventScreen> {
                         },
                         child: Text(
                           (providerListen.eventSelectedTime?.format(context) ??
-                                  "Choose time")
+                                  l10n.chooseTime)
                               .toString(),
                           style: Theme.of(context).textTheme.labelSmall!
                               .copyWith(
@@ -158,21 +160,21 @@ class _NewEventScreenState extends State<NewEventScreen> {
                   ),
                   SizedBox(height: size.height * .05),
                   FilledButtonWidget(
-                    text: "Add Event",
+                    text: l10n.addEvent,
                     onPressed: () async {
                       bool isValidate = _formState.currentState!.validate();
                       if (isValidate) {
                         if (providerRead.eventSelectedDate == null) {
                           SnakeBarHelper.errorSnakeBar(
                             context,
-                            "Date is required!",
+                            l10n.dateRequired,
                           );
                           return;
                         }
                         if (providerRead.eventSelectedTime == null) {
                           SnakeBarHelper.errorSnakeBar(
                             context,
-                            "Time is required!",
+                            l10n.timeRequired,
                           );
                           return;
                         }
@@ -187,12 +189,12 @@ class _NewEventScreenState extends State<NewEventScreen> {
                           if (context.mounted) {
                             SnakeBarHelper.sucessSnakeBar(
                               context,
-                              "Event was added!!",
+                            l10n.eventAdded,
                             );
                             Navigator.pop(context,true);
                           }
                         } on Exception catch (e) {
-                          // TODO
+                          
                           if (context.mounted) {
                             SnakeBarHelper.errorSnakeBar(
                               context,

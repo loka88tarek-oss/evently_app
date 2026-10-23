@@ -1,3 +1,4 @@
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/presentation/auth/password/forget_password_screen.dart';
 import 'package:evently_app/presentation/auth/register/register_screen.dart';
 import 'package:evently_app/presentation/auth/services/fire_base_services.dart';
@@ -27,6 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
@@ -48,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 SizedBox(height: size.height * .02),
                 Text(
-                  "Login to your account", //TODO:localization
+                  l10n.loginToYourAccount, 
                   style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                     color: Theme.of(context).cardColor,
                   ),
@@ -56,24 +58,24 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 10),
                 CustomTextFormFeild(
                   controller: emailController,
-                  hintText: "Enter your email", //TODO:localization
+                  hintText: l10n.enterYourEmail, 
                   prefixIcon: Assets.icons.emailIcon,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Email is required!"; //TODO:localization
+                      return l10n.emailRequired; 
                     }
                   },
                 ),
                 CustomTextFormFeild(
                   controller: passwordController,
-                  hintText: "Enter your password", //TODO:localization
+                  hintText: l10n.enterYourPassword, 
                   prefixIcon: Assets.icons.passwordIcon,
                   isPassword: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "password is required!"; //TODO:localization
+                      return l10n.passwordRequired; 
                     } else if (value.length < 6) {
-                      return "Password must be at least 6 characters!"; //TODO:localization
+                      return l10n.passwordMinLength; 
                     }
                   },
                 ),
@@ -87,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ).pushNamed(ForgetPasswordScreen.routeName);
                       },
                       child: Text(
-                        "Forget Password? ",
+                        l10n.forgetPassword,
                         style:
                             AppTextStyles.styleS14W600(
                               color: Theme.of(context).shadowColor,
@@ -104,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 FilledButtonWidget(
                   isLoading: isLoading,
                   formState: _formState,
-                  text: "Login",
+                  text: l10n.login,
                   onPressed: isLoading
                       ? null
                       : () async {
@@ -122,16 +124,29 @@ class _LoginScreenState extends State<LoginScreen> {
                                   await FireBaseServices.login(user);
                               if (userData != null) {
                                 if (context.mounted) {
-                                  SnakeBarHelper.sucessSnakeBar(context, "Login Successful!!");
+                                  SnakeBarHelper.sucessSnakeBar(
+                                    context,
+                                   l10n.loginSuccessful,
+                                  );
                                 }
-                                Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+                               if(context.mounted){ Navigator.of(
+                                  context,
+                                ).pushReplacementNamed(HomeScreen.routeName);}
                               }
                             } on String catch (e) {
                               if (context.mounted) {
-                                                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e,style: AppTextStyles.styleS18W600(color: Colors.white),),backgroundColor: AppColors.errorColor,));
-
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      e,
+                                      style: AppTextStyles.styleS18W600(
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    backgroundColor: AppColors.errorColor,
+                                  ),
+                                );
                               }
-                              
                             }
 
                             setState(() {
@@ -148,13 +163,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: "Don’t have an account ? ",
+                            text: l10n.dontHaveAccount,
                             style: AppTextStyles.styleS14W400(
                               color: Theme.of(context).hoverColor,
                             ),
                           ),
                           TextSpan(
-                            text: "Signup",
+                            text: l10n.signUp,
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 Navigator.of(
@@ -185,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Divider(color: Theme.of(context).dividerColor),
                     ),
                     Text(
-                      "Or", //TODO loclization
+                      l10n.or, 
                       style: AppTextStyles.styleS16W500(
                         color: Theme.of(context).shadowColor,
                       ),
@@ -211,7 +226,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       onPressed: () {},
                       label: Text(
-                        "Login with Google ",
+                       l10n.loginWithGoogle,
                         style: AppTextStyles.styleS18W500(
                           color: Theme.of(context).shadowColor,
                         ),

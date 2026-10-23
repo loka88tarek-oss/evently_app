@@ -1,5 +1,6 @@
 import 'package:evently_app/common/app_text_styles.dart';
 import 'package:evently_app/gen/assets.gen.dart';
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/onboarding/mainOnBoarding/main_onboarding_screen.dart';
 import 'package:evently_app/onboarding/onboardingScreens/widgets/onboarding_widget.dart';
 import 'package:evently_app/presentation/auth/login/login_screen.dart';
@@ -23,21 +24,20 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
     Assets.images.onboaarding2.path,
     Assets.images.onboarding3.path,
   ];
-  final List<OnboardingModel> pages = const [
+  List<OnboardingModel> get pages => [
     OnboardingModel(
-      title: 'Find Events That Inspire You',
-      description:
-          "Dive into a world of events crafted to fit your unique interests. Whether you're into live music, art workshops, professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect, and make the most of every opportunity around you.",
+      title: AppLocalizations.of(context)!.onboarding1Title,
+      description: AppLocalizations.of(context)!.onboarding1Description,
     ),
+
     OnboardingModel(
-      title: 'Effortless Event Planning',
-      description:
-          "Take the hassle out of organizing events with our all-in-one planning tools. From setting up invites and managing RSVPs to scheduling reminders and coordinating details, we’ve got you covered. Plan with ease and focus on what matters – creating an unforgettable experience for you and your guests.",
+      title: AppLocalizations.of(context)!.onboarding2Title,
+      description: AppLocalizations.of(context)!.onboarding2Description,
     ),
+
     OnboardingModel(
-      title: 'Connect with Friends & Share Moments',
-      description:
-          "Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.",
+      title: AppLocalizations.of(context)!.onboarding3Title,
+      description: AppLocalizations.of(context)!.onboarding3Description,
     ),
   ];
 
@@ -73,6 +73,7 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
@@ -119,7 +120,7 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
                   ),
                   child: Center(
                     child: Text(
-                      "Skip",
+                      l10n.skip,
                       style: Theme.of(context).textTheme.headlineSmall!
                           .copyWith(
                             color: Theme.of(context).cardColor,
@@ -182,7 +183,7 @@ class _OnboardingscreenState extends State<Onboardingscreen> {
             ),
             SizedBox(height: 16),
             FilledButtonWidget(
-              text: isLast ? "Get started" : "Next",
+              text: isLast ? l10n.getStarted : l10n.next,
               onPressed: _next,
               isLoading: false,
             ),
@@ -197,5 +198,5 @@ class OnboardingModel {
   final String title;
   final String description;
 
-  const OnboardingModel({required this.title, required this.description});
+  OnboardingModel({required this.title, required this.description});
 }

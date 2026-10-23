@@ -1,4 +1,5 @@
 import 'package:evently_app/enums/category_enum.dart';
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/models/event_model.dart';
 import 'package:evently_app/presentation/home/tabs/fav_tab/fav_tab.dart';
 import 'package:evently_app/presentation/home/tabs/home_tap/home_provider/home_tab_provider.dart';
@@ -24,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> tabs() => [HomeTap(), FavTab(), ProfileTap()];
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return ChangeNotifierProvider(
       create: (context) => EventsProvider()..getEvent(),
       child: Scaffold(
@@ -44,17 +46,17 @@ class _HomeScreenState extends State<HomeScreen> {
             BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
               activeIcon: Icon(Icons.home),
-              label: "Home",
+              label: l10n.home,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.favorite_border_outlined),
               activeIcon: Icon(Icons.favorite),
-              label: "Favorite",
+              label: l10n.favorite,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person_2_outlined),
               activeIcon: Icon(Icons.person_2),
-              label: "profile",
+              label: l10n.profile,
             ),
           ],
         ),

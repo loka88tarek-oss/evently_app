@@ -1,3 +1,4 @@
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/presentation/auth/login/login_screen.dart';
 import 'package:evently_app/common/app_text_styles.dart';
 import 'package:evently_app/gen/assets.gen.dart';
@@ -11,6 +12,7 @@ class ForgetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isLoading = false;
+    final l10n = AppLocalizations.of(context)!;
     Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
@@ -37,7 +39,7 @@ class ForgetPasswordScreen extends StatelessWidget {
         ),
         title: Center(
           child: Text(
-            "Forget Password",
+            l10n.forgetPassword,
             style: AppTextStyles.styleS18W500(
               color: Theme.of(context).cardColor,
             ),
@@ -59,7 +61,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             ),
             SizedBox(height: size.height * .07),
             FilledButtonWidget(
-              text: "Reset Password",
+              text: l10n.resetPassword,
               isLoading: isLoading,
               onPressed: () {},
             ),

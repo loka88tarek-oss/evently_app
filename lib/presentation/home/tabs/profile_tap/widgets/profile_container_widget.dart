@@ -24,7 +24,7 @@ class ProfileContainerWidget extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            text, //TODO:LOCALIZATION
+            text, 
             style: AppTextStyles.styleS16W500(
               color: Theme.of(context).highlightColor,
             ),

@@ -1,4 +1,5 @@
 import 'package:evently_app/gen/assets.gen.dart';
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 enum CategoryEnum {
@@ -25,6 +26,22 @@ enum CategoryEnum {
         return isDarkMode ? Assets.images.sportDark.path : Assets.images.sport.path  ;
     }
   }
+   String getTitle(context){
+    switch (this) {
+      
+      case CategoryEnum.birthday:
+       return AppLocalizations.of(context)!.birthday;
+      case CategoryEnum.sport:
+       return AppLocalizations.of(context)!.sport;
+      case CategoryEnum.meeting:
+       return AppLocalizations.of(context)!.meeting;
+      case CategoryEnum.exhibtion:
+       return AppLocalizations.of(context)!.exhibition;
+      case CategoryEnum.bookClub:
+       return AppLocalizations.of(context)!.bookClub;
+    }
+   }
+
    IconData  get getIcon{
     switch (this) {
       case CategoryEnum.birthday:

@@ -1,3 +1,4 @@
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/presentation/auth/login/login_screen.dart';
 import 'package:evently_app/presentation/auth/services/fire_base_services.dart';
 import 'package:evently_app/common/app_text_styles.dart';
@@ -29,6 +30,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool isLoading = false;
   @override
   Widget build(BuildContext context) {
+     final l10n = AppLocalizations.of(context)!;
     Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: AppBar(
@@ -50,7 +52,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               children: [
                 SizedBox(height: size.height * .02),
                 Text(
-                  "Create your account", //TODO:localization
+                l10n.createYourAccount, 
                   style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                     color: Theme.of(context).cardColor,
                   ),
@@ -58,47 +60,47 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 SizedBox(height: 10),
                 CustomTextFormFeild(
                   controller: nameController,
-                  hintText: "Enter your name", //TODO:localization
+                  hintText: l10n.enterYourName, 
                   prefixIcon: Assets.icons.user,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Name is required!"; //TODO:localization
+                      return l10n.nameRequired; 
                     }
                   },
                 ),
                 CustomTextFormFeild(
                   controller: emailController,
-                  hintText: "Enter your email", //TODO:localization
+                  hintText: l10n.enterYourEmail, 
                   prefixIcon: Assets.icons.emailIcon,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Email is required!"; //TODO:localization
+                      return l10n.emailRequired; 
                     }
                   },
                 ),
                 CustomTextFormFeild(
                   controller: passwordController,
-                  hintText: "Enter your password", //TODO:localization
+                  hintText: l10n.enterYourPassword, 
                   prefixIcon: Assets.icons.passwordIcon,
                   isPassword: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "password is required!"; //TODO:localization
+                      return l10n.passwordRequired; 
                     } else if (value.length < 6) {
-                      return "Password must be at least 6 characters!"; //TODO:localization
+                      return l10n.passwordMinLength; 
                     }
                   },
                 ),
                 CustomTextFormFeild(
                   controller: rePasswordController,
-                  hintText: "Confirm your password", //TODO:localization
+                  hintText: l10n.confirmYourPassword, 
                   prefixIcon: Assets.icons.passwordIcon,
                   isPassword: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "password is required!"; //TODO:localization
+                      return l10n.passwordRequired; 
                     } else if (value != passwordController.text) {
-                      return "Password does not match!"; //TODO:localization
+                      return l10n.passwordsDoNotMatch; 
                     }
                   },
                 ),
@@ -106,7 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                 FilledButtonWidget(
                   isLoading: isLoading,
-                  text: "Sign up",
+                  text: l10n.signUp,
                   formState: _formState,
                   onPressed: isLoading
                       ? null
@@ -125,7 +127,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             try {
                               await FireBaseServices.register(user);
                               if (context.mounted) {
-SnakeBarHelper.sucessSnakeBar(context, "Sucess,Start Login!");
+SnakeBarHelper.sucessSnakeBar(context,l10n.registerSuccess);
 
                                 Navigator.of(context).pop();
                               }
@@ -159,7 +161,7 @@ SnakeBarHelper.sucessSnakeBar(context, "Sucess,Start Login!");
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: "Already have an account? ",
+                            text: l10n.alreadyHaveAccount,
                             style: AppTextStyles.styleS14W400(
                               color: Theme.of(context).hoverColor,
                             ),
@@ -171,7 +173,7 @@ SnakeBarHelper.sucessSnakeBar(context, "Sucess,Start Login!");
                                   context,
                                 ).pushNamed(LoginScreen.routeName);
                               },
-                            text: "Login",
+                            text: l10n.login,
                             style:
                                 AppTextStyles.styleS14W400(
                                   color: Theme.of(context).shadowColor,
@@ -196,7 +198,7 @@ SnakeBarHelper.sucessSnakeBar(context, "Sucess,Start Login!");
                       child: Divider(color: Theme.of(context).dividerColor),
                     ),
                     Text(
-                      "Or", //TODO loclization
+                      l10n.or, 
                       style: AppTextStyles.styleS16W500(
                         color: Theme.of(context).shadowColor,
                       ),
@@ -222,7 +224,7 @@ SnakeBarHelper.sucessSnakeBar(context, "Sucess,Start Login!");
                       ),
                       onPressed: () {},
                       label: Text(
-                        "Sign up with Google ",
+                        l10n.signUpWithGoogle,
                         style: AppTextStyles.styleS18W500(
                           color: Theme.of(context).shadowColor,
                         ),

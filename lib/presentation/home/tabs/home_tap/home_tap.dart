@@ -22,9 +22,17 @@ class HomeTap extends StatelessWidget {
       return Center(child: Text(provider.errorMessage.toString()));
     }
     List<EventModel> events = provider.events;
-    return ListView.builder(
-      itemCount: events.length,
-      itemBuilder: (context, index) => EventCard(eventModel: events[index]),
+    return RefreshIndicator(
+      onRefresh: () {
+         return Provider.of<EventsProvider>(
+                  context,
+                  listen: false,
+                ).getEvent();
+      },
+      child: ListView.builder(
+        itemCount: events.length,
+        itemBuilder: (context, index) => EventCard(eventModel: events[index]),
+      ),
     );
   }
 }
